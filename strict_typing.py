@@ -29,7 +29,7 @@ def type_info(arg_names, arg_types, kwarg_types, ret_type):
         ret += '\n' + 'returns: ' + ret_type
     return ret
 
-def strict_typing(*arg_types, **kwarg_types):
+def types(*arg_types, **kwarg_types):
 
     if arg_types is None: arg_types = []
     if kwarg_types is None: kwarg_types = {}
@@ -89,12 +89,12 @@ def strict_typing(*arg_types, **kwarg_types):
         return inner
     return outer
 
-@strict_typing(x=int, y=int, _ret_type=int)
+@types(x=int, y=int, _ret_type=int)
 def add2(x, y):
     '''this is add2'''
     return x+y
 
-@strict_typing(str, _ret_type=str)
+@types(str, _ret_type=str)
 def end_char(strn):
     if len(strn) == 0: return
     else: return strn[-1]
