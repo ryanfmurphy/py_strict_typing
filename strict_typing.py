@@ -30,8 +30,13 @@ def type_info(arg_names, arg_types, kwarg_types, ret_type):
     return ret
 
 def strict_typing(*arg_types, **kwarg_types):
+
     if arg_types is None: arg_types = []
     if kwarg_types is None: kwarg_types = {}
+
+    # make sure it's mutable
+    arg_types = list(arg_types)
+
     if '_ret_type' in kwarg_types:
         _ret_type = kwarg_types.pop('_ret_type')
     else:
