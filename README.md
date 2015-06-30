@@ -28,3 +28,18 @@ But call it with the wrong types and you get a TypeError:
     ...
     TypeError: Argument 0 of add2 is type str ('h'), expected int
 
+It works with keyword arguments too:
+
+    @types(task=str, reason=str)
+    def excuse(task, reason):
+        '''this is add2'''
+        return "I didn't end up doing {task} because {reason}.".format(
+                    task=task, reason=reason)
+
+    >>> excuse(task="mow the lawn", reason="it's too hot outside")
+    "I didn't end up doing mow the lawn because it's too hot outside."
+    >>> excuse(task="mow the lawn", reason=42)
+    Traceback (most recent call last):
+    ...
+    TypeError: Keyword argument reason of excuse is type int (42), expected str
+

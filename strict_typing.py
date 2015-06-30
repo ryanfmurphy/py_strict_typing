@@ -29,6 +29,8 @@ def type_info(arg_names, arg_types, kwarg_types, ret_type):
         ret += '\n' + 'returns: ' + ret_type
     return ret
 
+
+# the main decorator
 def types(*arg_types, **kwarg_types):
 
     if arg_types is None: arg_types = []
@@ -88,6 +90,8 @@ def types(*arg_types, **kwarg_types):
         inner.__doc__ += type_info(regular_arg_names, arg_types,kwarg_types,_ret_type)
         return inner
     return outer
+
+# examples
 
 @types(x=int, y=int, _ret_type=int)
 def add2(x, y):
